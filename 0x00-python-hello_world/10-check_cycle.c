@@ -12,7 +12,7 @@ int check_cycle(listint_t *list)
 
 	temp = malloc(sizeof(listint_t));
 	move = malloc(sizeof(listint_t));
-	if (temp == NULL || temp == NULL || list == NULL)
+	if (temp == NULL || temp == NULL)
 		return (1);
 	temp = list;
 	move = list;
