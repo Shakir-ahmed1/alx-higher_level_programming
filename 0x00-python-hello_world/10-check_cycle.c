@@ -12,12 +12,14 @@ int check_cycle(listint_t *list)
 
 	temp = malloc(sizeof(listint_t));
 	move = malloc(sizeof(listint_t));
-	if (temp == NULL || temp == NULL)
-		return (0);
+	if (temp == NULL || temp == NULL || list == NULL)
+		return (1);
 	temp = list;
 	move = list;
 	if (move == move->next)
+	{
 		return (1);
+	}
 	while (1)
 	{
 		move = list;
@@ -27,9 +29,13 @@ int check_cycle(listint_t *list)
 		{
 			move = move->next;
 			if (temp == move)
+			{
 				return (1);
-			if (temp == NULL)
+			}
+			if (temp == NULL || move == NULL)
+			{
 				return (0);
+			}
 			j++;
 		}
 		i++;
