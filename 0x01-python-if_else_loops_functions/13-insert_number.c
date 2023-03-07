@@ -28,13 +28,13 @@ listint_t *insert_node(listint_t **head, int number)
 		*head = new;
 		return (new);
 	}
-	while(temp->next->n < number)
+	while(temp->next && temp->next->n < number)
 	{
+		if (temp->next == NULL)
+			break;
 		temp = temp->next;
 	}
-	{
 		new->next = temp->next;
 		temp->next = new;
-	}
 	return (new);
 }
