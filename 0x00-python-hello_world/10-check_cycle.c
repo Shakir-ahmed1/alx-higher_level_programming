@@ -27,11 +27,14 @@ int check_cycle(listint_t *list)
 	m = move;
 	temp = list;
 	move = list;
-	if (list == NULL || list->next == NULL || move == move->next)
+	if (list == NULL || list->next == NULL)
 	{
 		free_both(t, m);
-		return (1);
-	}
+		return (0); }
+	if (move == move->next)
+	{
+		free_both(t, m);
+		return (1); }
 	while (1)
 	{
 		move = list;
@@ -47,13 +50,9 @@ int check_cycle(listint_t *list)
 			if (temp == NULL || move == NULL)
 			{
 				free_both(t, m);
-				return (0);
-			}
+				return (0); }
 			move = move->next;
-			j++;
-		}
-		i++;
-	}
+			j++; }
+		i++; }
 	free_both(t, m);
-	return (0);
-}
+	return (0); }
