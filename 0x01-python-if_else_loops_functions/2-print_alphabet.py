@@ -1,4 +1,3 @@
 #!/usr/bin/python3
-for i in [""]:
-    pass
-print("abcdefghijklmnopqrstuvwxyz".format(),end = "")
+for n in range(97, 123):
+    print("{}".format(chr(n)), end="")
