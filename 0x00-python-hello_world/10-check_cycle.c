@@ -27,7 +27,6 @@ int check_cycle(listint_t *list)
 		j = 0;
 		while (j < i)
 		{
-			move = move->next;
 			if (temp == move)
 			{
 				return (1);
@@ -36,6 +35,7 @@ int check_cycle(listint_t *list)
 			{
 				return (0);
 			}
+			move = move->next;
 			j++;
 		}
 		i++;
