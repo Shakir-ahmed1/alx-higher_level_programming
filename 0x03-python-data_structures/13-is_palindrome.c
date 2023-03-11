@@ -5,6 +5,25 @@
  * @head: the starting point of the linked list
  * Return: 0 if not palindrome. 1 if palindrome
  */
+int isPalindromeUtil(listint_t **left, listint_t *right)
+{
+    if (right == NULL)
+        return 1;
+    int isp = isPalindromeUtil(left, right->next);
+    if (isp == 0)
+        return 0;
+
+    int isp1 = (right->n == (*left)->n);
+
+    *left = (*left)->next;
+
+    return isp1;
+}
+
+int is_palindrome(listint_t **head)
+{
+   return isPalindromeUtil(head, *head);
+}
 /**
 int is_palindrome(listint_t **head)
 {
@@ -35,28 +54,3 @@ int is_palindrome(listint_t **head)
 	return (1);
 }
 */
-int isPalindromeUtil(listint_t **left, listint_t *right)
-{
-    /* stop recursion when right becomes NULL */
-    if (right == NULL)
-        return 1;
-
-    /* If sub-list is not palindrome then no need to check for current left and right, return false */
-    int isp = isPalindromeUtil(left, right->next);
-    if (isp == 0)
-        return 0;
-
-    /* Check values at current left and right */
-    int isp1 = (right->n == (*left)->n);
-
-    /* Move left to next node */
-    *left = (*left)->next;
-
-    return isp1;
-}
-
-/* The main function that checks if linked list is palindrome or not */
-int is_palindrome(listint_t **head)
-{
-   return isPalindromeUtil(head, *head);
-}
