@@ -5,39 +5,14 @@
  * @head: the starting point of the linked list
  * Return: 0 if not palindrome. 1 if palindrome
  */
-int isPalindromeUtil(listint_t **left, listint_t *right);
 int is_palindrome(listint_t **head)
 {
-   return isPalindromeUtil(head, *head);
-}
-int isPalindromeUtil(listint_t **left, listint_t *right)
-{
-	int isp, isp1;
-
-	if (right == NULL)
-		return 1;
-	isp = isPalindromeUtil(left, right->next);
-	if (isp == 0)
-		return 0;
-	isp1 = (right->n == (*left)->n);
-	*left = (*left)->next;
-
-	return isp1;
-}
-
-/**
-int is_palindrome(listint_t **head)
-{
-	listint_t *start, *end;
+	listint_t *start;
 	int a[100];
 	int i = 0, len = 0;
 
 	if (head == NULL || *head == NULL || (*head)->next == NULL)
 		return (1);
-	start = malloc(sizeof(listint_t));
-	end = malloc(sizeof(listint_t));
-	if (start == NULL || end == NULL)
-		return (0);
 	start = *head;
 	while (start != NULL)
 	{
@@ -54,4 +29,3 @@ int is_palindrome(listint_t **head)
 	}
 	return (1);
 }
-*/
