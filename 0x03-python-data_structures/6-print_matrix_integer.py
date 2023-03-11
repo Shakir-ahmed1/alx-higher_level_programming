@@ -8,4 +8,4 @@ def print_matrix_integer(matrix=[[]]):
             if b == c - 1:
                 print("{:d}".format(matrix[a][b]))
             else:
-                print("{:d} ".format(matrix[a][b]), end=" ")
+                print("{:d}".format(matrix[a][b]), end=" ")
