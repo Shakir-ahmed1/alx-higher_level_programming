@@ -1,3 +1,4 @@
+#include "lists.h"
 /**
  * is_palindrome - checks if the linked list value is symmetry
  * @head: the starting point of the linked list
