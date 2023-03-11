@@ -5,27 +5,28 @@
  * @head: the starting point of the linked list
  * Return: 0 if not palindrome. 1 if palindrome
  */
+int palind_checker(listint_t**, listint_t*);
 int is_palindrome(listint_t **head)
 {
-	listint_t *start;
-	int a[100];
-	int i = 0, len = 0;
-
 	if (head == NULL || *head == NULL || (*head)->next == NULL)
 		return (1);
-	start = *head;
-	while (start != NULL)
+	return palind_checker(head, *head);
+}
+int palind_checker(listint_t **left, listint_t *right)
+{
+	int a;
+
+	if (right == NULL)
+		return (1);
+	a = palind_checker(left, right->next);
+	if (a == 0)
+		return 0;
+	if ((*left)->n == right->n)
 	{
-		a[len] = start->n;
-		len++;
-		start = start->next;
+		(*left) = (*left)->next;
+		return 1;
 	}
-	for (i = 0; i <= (len / 2); i++)
-	{
-		if (a[i] == a[len - i - 1])
-			continue;
-		else
-			return (0);
-	}
-	return (1);
+	else
+		return 0;
+
 }
