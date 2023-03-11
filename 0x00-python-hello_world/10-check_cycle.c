@@ -9,14 +9,14 @@ int check_cycle(listint_t *list)
 	listint_t *temp, *move;
 	int i = 0, j = 0;
 
-	temp = list;
-	move = list;
 	if (list == NULL || list->next == NULL)
 	{
 		return (0); }
-	if (move == move->next)
+	if (list == list->next)
 	{
 		return (1); }
+	move = list;
+	temp = list;
 	while (1)
 	{
 		move = list;
