@@ -30,6 +30,7 @@ void print_python_bytes(PyObject *p)
 	long unsigned int i, size;
 	
 	printf("[.] bytes object info\n");
+	/* checks if the given PyObject is a valid PyByteObject */
 	if (!PyBytes_Check(p))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
@@ -37,11 +38,15 @@ void print_python_bytes(PyObject *p)
 	}
 
 	pb = (PyBytesObject *) p;
+	/* returns the size of the PyByteObject,
+	 *  the reason we don't use strlen is 
+	 *  because it terminates at unwanted 0 byte but this one doesn't*/
 	size = PyBytes_Size(p);
 	if (p)
 		printf("  size: %lu\n", size);
 	else
 		printf("  size: 0\n");
+	/* pb->ob_sval is the data which the byte object is stored*/
 	printf("  trying string: %s\n", pb->ob_sval);
 	if (size < 10)
 		printf("  first %lu bytes:", size + 1);
