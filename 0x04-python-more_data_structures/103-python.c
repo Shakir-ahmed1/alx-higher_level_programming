@@ -42,10 +42,7 @@ void print_python_bytes(PyObject *p)
 	 *  the reason we don't use strlen is 
 	 *  because it terminates at unwanted 0 byte but this one doesn't*/
 	size = PyBytes_Size(p);
-	if (p)
-		printf("  size: %lu\n", size);
-	else
-		printf("  size: 0\n");
+	printf("  size: %lu\n", size);
 	/* pb->ob_sval is the data which the byte object is stored*/
 	printf("  trying string: %s\n", pb->ob_sval);
 	if (size < 10)
