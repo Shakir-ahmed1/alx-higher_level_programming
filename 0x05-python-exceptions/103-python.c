@@ -12,6 +12,7 @@ void print_python_list(PyObject *p)
 	PyListObject *list;
 	int i;
 
+	fflush(stdout);
 	list = (PyListObject *) p;
 	printf("[*] Python list info\n");
 	if (!PyList_Check(p))
@@ -35,6 +36,7 @@ void print_python_bytes(PyObject *p)
 	PyBytesObject *pb;
 	long unsigned int i, size;
 	
+	fflush(stdout);
 	printf("[.] bytes object info\n");
 	/* checks if the given PyObject is a valid PyByteObject */
 	if (!PyBytes_Check(p))
@@ -64,11 +66,16 @@ void print_python_bytes(PyObject *p)
 	} 
 	printf("\n");
 }
+/**
+ * print_python_float - prints float python object
+ * @p: the pyobject that holds the pyfloat
+ */
 void print_python_float(PyObject *p)
 {
 	PyFloatObject *fl;
 	char *fl_neat;
 
+	fflush(stdout);
 	printf("[.] float object info\n");
 	if (!PyFloat_Check(p))
 	{
