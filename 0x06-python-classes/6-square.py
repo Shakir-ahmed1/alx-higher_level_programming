@@ -73,7 +73,7 @@ class Square:
     def position(self, value):
         """Position setter"""
         try:
-            if isinstance(value, tuple) or len(value) != 2:
+            if not isinstance(value, tuple) or len(value) != 2:
                 raise TypeError
             self.__position = value
         except TypeError:
