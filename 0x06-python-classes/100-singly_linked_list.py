@@ -6,6 +6,7 @@ class Node:
     """Defines a single node"""
 
     def __init__(self, data, next_node=None):
+        """Initailze the data"""
         if not isinstance(data, int):
             raise TypeError("data must be an integer", end="")
         self.__data = data
@@ -17,20 +18,24 @@ class Node:
 
     @property
     def data(self):
+        """Data getter"""
         return self.__data
 
     @data.setter
     def data(self, value):
+        """Data Setter"""
         if not isinstance(value, int):
             raise TypeError("data must be an integer", end="")
         self.__data = value
 
     @property
     def next_node(self):
+        """Node getter"""
         return self.__next_node
 
     @next_node.setter
     def next_node(self, value):
+        """Node setter"""
         if not value or isinstance(value, type(self)):
             pass
         else:
@@ -42,9 +47,11 @@ class SinglyLinkedList:
     """Creates singly linked list"""
 
     def __init__(self):
+        """Initialize the data"""
         self.__head = None
 
     def sorted_insert(self, value):
+        """Add value according it's value"""
         new_node = Node(value)
         if not self.__head:
             self.__head = new_node
@@ -60,6 +67,7 @@ class SinglyLinkedList:
             temp.next_node = new_node
 
     def __str__(self):
+        """String representation of The class"""
         temp = self.__head
         ls = []
         if not temp:
