@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""Square Modlue"""
+"""Square Module"""
 
 
 class Square:
     """Square with a size"""
+
     def __init__(self, size=0, position=(0, 0)):
         """Initializes the size and handles error"""
         try:
@@ -22,11 +23,11 @@ class Square:
 
         try:
             if (not isinstance(position, tuple)
-                or len(position) != 2
-                or not isinstance(position[0], int)
-                or not isinstance(position[1], int)
-                or position[0] < 0 or position[1] < 0):
-                        raise TypeError
+                    or len(position) != 2
+                    or not isinstance(position[0], int)
+                    or not isinstance(position[1], int)
+                    or position[0] < 0 or position[1] < 0):
+                raise TypeError
 
             self.__position = position
         except TypeError:
@@ -35,12 +36,12 @@ class Square:
 
     def area(self):
         """Calculates the area of the square"""
-        return (self.__size * self.__size)
+        return self.__size * self.__size
 
     @property
     def size(self):
         """get size"""
-        return (self.__size)
+        return self.__size
 
     @size.setter
     def size(self, size):
@@ -68,12 +69,12 @@ class Square:
     def position(self, value):
         """Position setter"""
         if (not isinstance(value, tuple)
-            or len(value) != 2
-            or not isinstance(value[0], int)
-            or not isinstance(value[1], int)
-            or value[0] < 0 or value[1] < 0):
-                raise TypeError("position must be a tuple"
-                                " of 2 positive integers")
+                or len(value) != 2
+                or not isinstance(value[0], int)
+                or not isinstance(value[1], int)
+                or value[0] < 0 or value[1] < 0):
+            raise TypeError("position must be a tuple"
+                            " of 2 positive integers")
         else:
             self.__position = value
 
@@ -85,4 +86,4 @@ class Square:
             print()
         for i in range(self.__size):
             print(" " * self.__position[0], end="")
-            print("#"*self.__size)
+            print("#" * self.__size)
