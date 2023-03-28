@@ -4,7 +4,7 @@
 
 class Square:
     """Square with a size"""
-    def __init__(self, size=0):
+    def __init__(self, size=0, position=(0, 0)):
         """Initializes the size and handles error"""
         try:
             if not isinstance(size, int):
@@ -18,6 +18,14 @@ class Square:
             raise
         except ValueError:
             print("size must be >= 0", end="")
+            raise
+
+        try:
+            if len(position) != 2 or not isinstance(position, tuple):
+                raise TypeError
+            self.__position = position
+        except TypeError:
+            print("position must be a tuple of 2 positive integers")
             raise
 
     def area(self):
@@ -48,4 +56,20 @@ class Square:
         if self.__size == 0:
             print()
         for i in range(self.__size):
+            print(" " * self.__position[0], end="")
             print("#"*self.__size)
+
+    @property
+    def position(self):
+        return self.__position
+
+    @position.setter
+    def position(self, value):
+        try:
+            if isinstance(value, tuple) or len(value) != 2:
+                raise TypeError
+            self.__position = value
+        except TypeError:
+            print("position must be a tuple of 2 positive integers")
+            raise
+
