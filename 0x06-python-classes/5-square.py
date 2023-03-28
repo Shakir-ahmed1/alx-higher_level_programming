@@ -23,10 +23,12 @@ class Square:
     def area(self):
         """Calculates the area of the square"""
         return (self.__size * self.__size)
+
     @property
     def size(self):
         """get size"""
         return (self.__size)
+
     @size.setter
     def size(self, size):
         """size setter"""
@@ -43,6 +45,7 @@ class Square:
         except ValueError:
             print("size must be >= 0", end="")
             raise
+
     def my_print(self):
         """Prints the size of square using #"""
         if self.__size == 0:
