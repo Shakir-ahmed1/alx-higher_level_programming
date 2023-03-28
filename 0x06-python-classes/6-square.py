@@ -54,16 +54,6 @@ class Square:
             print("size must be >= 0", end="")
             raise
 
-    def my_print(self):
-        """Prints the size of square using #"""
-        if self.__size == 0:
-            print()
-        for j in range(self.__position[1]):
-            print()
-        for i in range(self.__size):
-            print(" " * self.__position[0], end="")
-            print("#"*self.__size)
-
     @property
     def position(self):
         """Position getter"""
@@ -73,9 +63,23 @@ class Square:
     def position(self, value):
         """Position setter"""
         try:
-            if not isinstance(value, tuple) or len(value) != 2:
+            if not isinstance(value, tuple) or
+            len(value) != 2 or
+            not isinstance(value[0], int) or
+            not isinstance(value[1], int) or
+            value[0] < 0 or value[1] < 0:
                 raise TypeError
             self.__position = value
         except TypeError:
             print("position must be a tuple of 2 positive integers", end="")
             raise
+
+    def my_print(self):
+        """Prints the size of square using #"""
+        if self.__size == 0:
+            print()
+        for j in range(self.__position[1]):
+            print()
+        for i in range(self.__size):
+            print(" " * self.__position[0], end="")
+            print("#"*self.__size)
