@@ -92,7 +92,7 @@ class Square:
         """Prints the size of square using #"""
         ls = []
         if self.__size == 0:
-            return "\n"
+            ls.append("\n")
         for j in range(self.__position[1]):
             ls.append("\n")
         for i in range(self.__size):
