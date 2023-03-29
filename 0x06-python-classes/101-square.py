@@ -97,8 +97,5 @@ class Square:
             ls.append("\n")
         for i in range(self.__size):
             ls.append(" " * self.__position[0])
-            if i == self.__size - 1:
-                ls.append("#" * self.__size)
-            else:
-                ls.append("#" * self.__size + "\n")
+            ls.append("#" * self.__size + "\n")
         return "".join(ls)
