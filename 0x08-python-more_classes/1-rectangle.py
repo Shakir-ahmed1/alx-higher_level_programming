@@ -13,7 +13,7 @@ class Rectangle:
                 width: the width of the rectangle
                 height: the height of the rectangle
         """
-        if not isinstance(height, int) or not instance(width, int):
+        if not isinstance(height, int) or not isinstance(width, int):
             raise TypeError("width must be an integer")
         if width < 0 or height < 0:
             raise ValueError("width must be >= 0")
