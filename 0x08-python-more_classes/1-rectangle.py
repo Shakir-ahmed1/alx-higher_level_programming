@@ -7,8 +7,6 @@
 
 class Rectangle:
     """A class that represents rectangle"""
-    __width = 0
-    __height = 0
     def __init__(self, width=0, height=0):
         """ Initializes the classes with the given value
             Args:
