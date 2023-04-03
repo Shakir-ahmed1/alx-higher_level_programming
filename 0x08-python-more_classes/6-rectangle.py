@@ -7,6 +7,7 @@
 
 class Rectangle:
     """A class that represents rectangle"""
+    number_of_instances = 0
     def __init__(self, width=0, height=0):
         """ Initializes the classes with the given value
             Args:
@@ -23,6 +24,7 @@ class Rectangle:
             raise ValueError("height must be >= 0")
         self.__width = width
         self.__height = height
+        type(self).number_of_instances += 1
 
     @property
     def width(self):
@@ -61,3 +63,23 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return 0
         return self.__width * 2 + self.__height * 2
+
+    def __str__(self):
+        """prints the rectangle using # """
+        result = ""
+        if self.__width == 0 or self.__height == 0:
+            return result
+        for a in range(self.__height):
+            result += "#" * self.__width
+            if a != self.__height - 1:
+                result += "\n"
+        return result
+
+    def __repr__(self):
+        """returns the string that enables to recreate same rectangle"""
+        return f"Rectangle({self.__width}, {self.__height})"
+
+    def __del__(self):
+        """notifies at deletion of the rectangle"""
+        print("Bye rectangle...")
+        type(self).number_of_instances -= 1
