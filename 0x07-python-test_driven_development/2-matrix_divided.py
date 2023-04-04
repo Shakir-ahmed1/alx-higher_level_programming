@@ -3,14 +3,16 @@
 
 
 def matrix_divided(matrix, div):
-    """Divides the matrix by the given dividor"""
+    """Divides the matrix by the given divider"""
     if not isinstance(matrix, list) or not matrix:
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError("matrix must be a matrix (list of lists)"
+                        "of integers/floats")
     ln = -1
     result = []
     for m in matrix:
         if not isinstance(m, list):
-            raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+            raise TypeError("matrix must be a matrix (list of lists)"
+                            "of integers/floats")
         if len(m) == ln or ln == -1:
             ln = len(m)
         else:
@@ -22,7 +24,9 @@ def matrix_divided(matrix, div):
         temp = []
         for n in m:
             if type(n) not in [float, int]:
-                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+                raise TypeError("matrix must be a matrix (list of lists)"
+                                "of integers/floats")
+
             a = (n / div).__round__(2)
             temp.append(a)
         result.append(temp)

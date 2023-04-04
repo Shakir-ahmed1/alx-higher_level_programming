@@ -4,6 +4,7 @@
 import unittest
 max_integer = __import__("6-max_integer").max_integer
 
+
 class TestMaxInteger(unittest.TestCase):
     """Tests the given funcitons"""
     def test_max_integer(self):
@@ -17,5 +18,3 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([2]), 2)
         self.assertEqual(max_integer({1: 1, 3: 2, 4: 3, 2: 4, 0: 9}), 9)
         self.assertRaises(KeyError, max_integer, {1: 1, 3: 2, 4: 3, 2: 4})
-        
-
