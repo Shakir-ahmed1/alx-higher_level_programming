@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 import sys
 
+
 def nqueens(n):
+    """returns the possible placements of the queens"""
     if not n.isdigit():
         print("N must be a number")
         sys.exit(1)
@@ -11,6 +13,9 @@ def nqueens(n):
         sys.exit(1)
 
     def solve(queens, difference, add):
+        """applies the backtracking algorithm recursively and generates
+            possible possitons
+        """
         p = len(queens)
         if p == n:
             result.append(queens)
@@ -21,9 +26,10 @@ def nqueens(n):
                 solve(queens+[q], difference+[p-q], add+[p+q])
 
     result = []
-    solve([],[],[])
+    solve([], [], [])
 
     return result
+
 
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
@@ -33,7 +39,7 @@ rs = []
 for j in result:
     temp = []
     for i in range(len(j)):
-        temp.append([i,j[i]])
+        temp.append([i, j[i]])
     rs.append(temp)
 for r in rs:
     print(r)
