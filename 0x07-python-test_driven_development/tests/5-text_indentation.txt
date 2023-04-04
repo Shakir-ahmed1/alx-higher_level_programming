@@ -1,0 +1,60 @@
+the ``5-text_indentation`` module
+=============================
+
+Using ``text_indentation``
+----------------------
+
+basic functionalty:
+        >>> text_indentation = __import__('5-text_indentation').text_indentation
+        >>> text_indentation("""A: hey, you. what are you doing? B: Nothing""")
+	A:
+	<BLANKLINE>	
+	hey, you.
+	<BLANKLINE>	
+	what are you doing?
+	<BLANKLINE>	
+	B:
+	<BLANKLINE>	
+	Nothing
+
+ending with the characters
+	>>> text_indentation("""A: hey, you. what are you doing? B: Nothing.""")
+        A:
+	<BLANKLINE>	
+	hey, you.
+	<BLANKLINE>	
+	what are you doing?
+	<BLANKLINE>	
+	B:
+	<BLANKLINE>	
+	Nothing.
+	<BLANKLINE>	
+
+empty string:
+        >>> text_indentation("")
+		
+non string value:
+        >>> text_indentation(('a','b'))
+	Traceback (most recent call last):
+            ...
+        TypeError: text must be a string
+
+with alot of spaces:
+        >>> text_indentation("   .    ?   , .   ")
+	.
+	<BLANKLINE>
+	?
+	<BLANKLINE>
+	, .
+	<BLANKLINE>
+
+	Traceback (most recent call last):
+            ...
+        TypeError: text must be a string
+only spaces:
+        >>> text_indentation("      a  ")
+	a
+
+new line with space:
+	>>> text_indentation("a  \n ")
+	a

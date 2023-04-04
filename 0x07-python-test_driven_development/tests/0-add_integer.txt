@@ -1,0 +1,45 @@
+the ``0-add_integer`` module
+=============================
+
+Using ``add_integer``
+----------------------
+
+basic functionalty:
+        >>> add_integer = __import__('0-add_integer').add_integer
+	>>> add_integer(1, 2)
+	3
+
+passing only one argument:
+
+	>>> add_integer(2)
+	100
+
+passing integer and float:
+	>>> add_integer(2, 2.3)
+	4
+
+passing both float:
+	>>> add_integer(2.1, 2.3)
+	4
+
+passing to first argument neither integer nor float
+	>>> add_integer([5], 3)
+	Traceback (most recent call last):
+            ...
+    	TypeError: a must be an integer
+
+passing to second argument neither integer nor float	
+	>>> add_integer(3, (6,))
+	Traceback (most recent call last):
+            ...
+    	TypeError: b must be an integer
+
+passing both arguments neither integer nor float
+	>>> add_integer("school", [6])
+	Traceback (most recent call last):
+            ...
+    	TypeError: a must be an integer
+
+passing negative arguments
+	>>> add_integer(-7, 14)
+	7
