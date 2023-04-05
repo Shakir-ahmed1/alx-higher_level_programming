@@ -43,3 +43,16 @@ passing both arguments neither integer nor float
 passing negative arguments
 	>>> add_integer(-7, 14)
 	7
+
+passing infinite float number:
+	>>> add_integer(int(float('inf')), 4)
+	Traceback (most recent call last):
+            ...
+	OverflowError: cannot convert float infinity to integer
+
+passing converting of NaN:
+	>>> add_integer(int(float('nan')), 4)
+	Traceback (most recent call last):
+            ...
+	ValueError: cannot convert float NaN to integer
+	
