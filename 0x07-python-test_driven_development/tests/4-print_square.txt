@@ -36,3 +36,8 @@ float and negative:
             ...
         TypeError: size must be an integer
 
+missing 1 argument:
+        >>> print_square()
+	Traceback (most recent call last):
+            ...
+        TypeError: print_square() missing 1 required positional argument: 'size'
