@@ -38,7 +38,5 @@ class Square(Rectangle):
     """ Square a rectangle with same width and height"""
     def __init__(self, size):
         """ Initializes the size of the square"""
-        self.integer_validator("size", size)
+        super().__init__(size, size)
         self.__size = size
-        super().__init__(self.__size, self.__size)
-
