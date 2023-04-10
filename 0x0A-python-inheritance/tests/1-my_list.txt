@@ -20,6 +20,8 @@ basic functionality:
 
 two same numbers:
 	>>> my_list1 = MyList()
+	>>> my_list1.print_sorted()
+	[]
 	>>> my_list1.append(1)
 	>>> my_list1.append(2)
 	>>> my_list1.append(1)
