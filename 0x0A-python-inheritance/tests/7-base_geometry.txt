@@ -1,0 +1,36 @@
+The ``7-base_geometry.py`` module
+===========================
+
+Using ``BaseGeometryi`` class
+
+basic functionality:
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("width", 89)
+
+errors:
+	>>> bg.integer_validator("width", 0)
+	Traceback (most recent call last):
+            ...
+        ValueError: width must be greater than 0
+
+	>>> bg.integer_validator("my_int", "-12")
+	Traceback (most recent call last):
+	    ...
+	TypeError: my_int must be an integer
+
+	>>> bg.integer_validator("num", -12)
+	Traceback (most recent call last):
+            ...
+	ValueError: num must be greater than 0
+
+number of arguments:
+	>>> bg.integer_validator("num")
+	Traceback (most recent call last):
+            ...
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+	>>> bg.integer_validator()
+	Traceback (most recent call last):
+            ...
+	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
