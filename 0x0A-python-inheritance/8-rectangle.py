@@ -12,13 +12,14 @@ class BaseGeometry:
         """ Validates integers for latter use"""
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
-        if value <= 0 or type(value) == bool:
+        if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
 
 
 class Rectangle(BaseGeometry):
     """ Rectangle a geometry with 4 sides """
     def __init__(self, width, height):
+        super().__init__()
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__height = height
