@@ -7,6 +7,7 @@ basic functionality:
 	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 	>>> bg = BaseGeometry()
 	>>> bg.integer_validator("width", 89)
+	>>> bg.integer_validator("", 89)
 
 errors:
 	>>> bg.integer_validator("width", 0)
@@ -46,6 +47,11 @@ type errors:
 	TypeError: my_int must be an integer
 
 	>>> bg.integer_validator("my_int", True)
+	Traceback (most recent call last):
+	    ...
+	TypeError: my_int must be an integer
+
+	>>> bg.integer_validator("my_int", [])
 	Traceback (most recent call last):
 	    ...
 	TypeError: my_int must be an integer
