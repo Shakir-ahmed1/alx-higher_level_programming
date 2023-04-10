@@ -56,6 +56,16 @@ type errors:
 	    ...
 	TypeError: my_int must be an integer
 
+	>>> bg.integer_validator("my_int", None)
+	Traceback (most recent call last):
+	    ...
+	TypeError: my_int must be an integer
+
+	>>> bg.integer_validator("my_int", 2.5)
+	Traceback (most recent call last):
+	    ...
+	TypeError: my_int must be an integer
+
 number of arguments:
 	>>> bg.integer_validator("num")
 	Traceback (most recent call last):
