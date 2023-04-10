@@ -11,4 +11,4 @@ def add_attribute(obj, attr, value):
     """ adds a new attribute if it is possible"""
     if getattr(obj, '__dict__', 'error') == "error":
         raise TypeError("can't add new add new attribute")
-    setattr(obj, attr, value)
+    obj.__dict__[attr] = value
