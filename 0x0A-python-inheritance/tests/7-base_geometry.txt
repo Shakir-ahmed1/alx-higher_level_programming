@@ -60,7 +60,10 @@ type errors:
 	Traceback (most recent call last):
 	    ...
 	TypeError: my_int must be an integer
-	>>> bg.integer_validator("my_int", 1)
+	>>> bg.integer_validator("my_int", False)
+	Traceback (most recent call last):
+	    ...
+	ValueError: my_int must be greater than 0
 
 number of arguments:
 	>>> bg.integer_validator("num")
