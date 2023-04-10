@@ -9,6 +9,6 @@ You are not allowed to import any module
 
 def add_attribute(obj, attr, value):
     """ adds a new attribute if it is possible"""
-    if getattr(obj, '__dict__', 'error') == "error":
+    if not hasattr(obj, '__dict__'):
         raise TypeError("can't add new add new attribute")
     obj.__dict__[attr] = value
