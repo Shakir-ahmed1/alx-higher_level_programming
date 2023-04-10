@@ -24,6 +24,32 @@ errors:
             ...
 	ValueError: num must be greater than 0
 
+type errors:
+	>>> bg.integer_validator("my_int", [-12,2,3])
+	Traceback (most recent call last):
+	    ...
+	TypeError: my_int must be an integer
+
+	>>> bg.integer_validator("my_int", (2,3,4))
+	Traceback (most recent call last):
+	    ...
+	TypeError: my_int must be an integer
+	
+	>>> bg.integer_validator("my_int", {'test':12})
+	Traceback (most recent call last):
+	    ...
+	TypeError: my_int must be an integer
+
+	>>> bg.integer_validator("my_int", {3,4,5})
+	Traceback (most recent call last):
+	    ...
+	TypeError: my_int must be an integer
+
+	>>> bg.integer_validator("my_int", True)
+	Traceback (most recent call last):
+	    ...
+	TypeError: my_int must be an integer
+
 number of arguments:
 	>>> bg.integer_validator("num")
 	Traceback (most recent call last):
