@@ -3,6 +3,7 @@
 
 
 def pascal_triangle(n):
+    """ pascals triangle implimentation """
     result = []
     temp = []
     holder = []
