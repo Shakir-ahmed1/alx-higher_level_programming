@@ -10,7 +10,7 @@ class Student:
 
     def to_json(self, attrs=None):
         dc = vars(self)
-        if attrs == None:
+        if attrs is None:
             return dc
         newdc = dict()
         for a in attrs:
