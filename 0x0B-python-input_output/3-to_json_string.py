@@ -6,4 +6,5 @@ import json
 
 
 def to_json_string(my_obj):
+    """ serializes the object to json formated string"""
     return json.dumps(my_obj)
