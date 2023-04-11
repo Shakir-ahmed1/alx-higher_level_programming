@@ -3,8 +3,9 @@
 """
 
 
-def add_attribute(obj, attr, value):
-    """ adds a new attribute if it is possible"""
-    if not hasattr(obj, '__dict__'):
-        raise TypeError("can't add new add new attribute")
-    setattr(obj, attr, value)
+def add_attribute(obj, attr, val):
+    """ adds an attribute to an object at runtime """
+    if hasattr(obj, "__dict__"):
+        setattr(obj, attr, val)
+    else:
+        raise TypeError("can't add new attribute")
