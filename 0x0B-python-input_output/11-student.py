@@ -24,5 +24,5 @@ class Student:
     def reload_from_json(self, json):
         """ replaces all attributes of the class using the json variable"""
         for d in json:
-            if hasattr(self,d):
+            if hasattr(self, d):
                 setattr(self, d, json[d])
