@@ -24,8 +24,6 @@ try:
             for d in sorted(dc):
                 if dc[d] != 0:
                     print(f"{d}: {dc[d]}")
-        if counter == 18:
-            raise KeyboardInterrupt()
 except KeyboardInterrupt:
     pass
 finally:
