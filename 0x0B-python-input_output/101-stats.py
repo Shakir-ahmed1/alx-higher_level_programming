@@ -10,6 +10,8 @@ counter = 0
 dc = {"200": 0, "301": 0, "400": 0, "401": 0,
       "403": 0, "404": 0, "405": 0, "500": 0}
 try:
+    if not sys.path.exists(sys.stdin):
+        exit()
     for line in sys.stdin:
         match = re.match(r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*)\]'
                          r' "GET \/projects\/260 HTTP\/1\.1" (\d{3}) (\d+)',
@@ -24,7 +26,7 @@ try:
             for d in sorted(dc):
                 if dc[d] != 0:
                     print(f"{d}: {dc[d]}")
-except KeyboardInterrupt:
+except Exception:
     pass
 finally:
     print(f"File size: {sum(file_size)}")
