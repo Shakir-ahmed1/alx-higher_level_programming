@@ -14,8 +14,6 @@ try:
         match = re.match(r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*)\]'
                          r' "GET \/projects\/260 HTTP\/1\.1" (\d{3}) (\d+)',
                          line)
-        if not match:
-            continue
         result.append(match.group(3))
         if match.group(3) in dc:
             dc[match.group(3)] += 1
@@ -29,8 +27,7 @@ try:
 except Exception:
     pass
 finally:
-    if counter != 0:
-        print(f"File size: {sum(file_size)}")
-        for d in sorted(dc):
-            if dc[d] != 0:
-                print(f"{d}: {dc[d]}")
+    print(f"File size: {sum(file_size)}")
+    for d in sorted(dc):
+        if dc[d] != 0:
+            print(f"{d}: {dc[d]}")
