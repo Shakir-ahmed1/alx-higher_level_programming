@@ -29,9 +29,8 @@ try:
 except Exception:
     pass
 finally:
-    if counter == 0:
-        exit()
-    print(f"File size: {sum(file_size)}")
-    for d in sorted(dc):
-        if dc[d] != 0:
-            print(f"{d}: {dc[d]}")
+    if counter != 0:
+        print(f"File size: {sum(file_size)}")
+        for d in sorted(dc):
+            if dc[d] != 0:
+                print(f"{d}: {dc[d]}")
