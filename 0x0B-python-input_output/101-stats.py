@@ -16,15 +16,11 @@ try:
         result.append(match.group(3))
         dc[match.group(3)] += 1
         file_size.append(int(match.group(4)))
-        counter +=1
-        if counter == 12:
-            raise KeyboardInterrupt()
 except KeyboardInterrupt:
-    pass
-finally:
     for r in range(len(result)):
         if r % 10 == 0:
             print(f"File size: {sum(file_size[:r+10])}")
             for d in dc:
                 if dc[d] != 0:
                     print(f"{d}: {dc[d]}")
+    raise
