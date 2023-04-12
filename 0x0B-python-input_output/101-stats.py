@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 import sys
-
+""" log parsing module"""
 def print_metrics(status_codes, total_size):
+    """ prints the metrics according to the given format """
     print("File size: {}".format(total_size))
     for code in sorted(status_codes.keys()):
         if status_codes[code] != 0:
