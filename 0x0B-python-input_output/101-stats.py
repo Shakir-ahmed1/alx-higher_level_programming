@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 import sys
 """ log parsing module"""
+
+
 def print_metrics(status_codes, total_size):
     """ prints the metrics according to the given format """
     print("File size: {}".format(total_size))
     for code in sorted(status_codes.keys()):
         if status_codes[code] != 0:
             print("{}: {}".format(code, status_codes[code]))
+
 
 status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 total_size = 0
