@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-"""import sys
-for line in sys.stdin:
-    chrCounter += len(line)
-    print(counter)
+"""
+Log parsing module
 """
 import sys
 import re
@@ -14,13 +12,19 @@ try:
     for line in sys.stdin:
         match = re.match(r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*)\] "GET \/projects\/260 HTTP\/1\.1" (\d{3}) (\d+)',line)
         result.append(match.group(3))
-        dc[match.group(3)] += 1
+        if match.group(3) in dc:
+            dc[match.group(3)] += 1
         file_size.append(int(match.group(4)))
-except KeyboardInterrupt:
-    for r in range(len(result)):
-        if r % 10 == 0:
-            print(f"File size: {sum(file_size[:r+10])}")
-            for d in dc:
+        counter +=1
+        if counter % 10 == 0:
+            print(f"File size: {sum(file_size[:counter+10])}")
+            for d in sorted(dc):
                 if dc[d] != 0:
                     print(f"{d}: {dc[d]}")
-    raise
+except KeyboardInterrupt:
+        for r in range(len(result)):
+            if r % 10 == 0:
+                print(f"File size: {sum(file_size[:r+10])}")
+                for d in sorted(dc):
+                    if dc[d] != 0:
+                        print(f"{d}: {dc[d]}")
