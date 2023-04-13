@@ -11,9 +11,14 @@ dc = {"200": 0, "301": 0, "400": 0, "401": 0,
       "403": 0, "404": 0, "405": 0, "500": 0}
 try:
     for line in sys.stdin:
-        match = re.match(r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*)\]'
+        # match = re.match(r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*)\]'
+        #                  r' "GET \/projects\/260 HTTP\/1\.1" (\d{3}) (\d+)',
+        #                  line)
+        match = re.match(r'(.*).*-.*\[(.*)\]'
                          r' "GET \/projects\/260 HTTP\/1\.1" (\d{3}) (\d+)',
                          line)
+        if not match:
+            continue
         result.append(match.group(3))
         if match.group(3) in dc:
             dc[match.group(3)] += 1
