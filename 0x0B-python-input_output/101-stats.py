@@ -15,7 +15,7 @@ try:
         #                  r' "GET \/projects\/260 HTTP\/1\.1" (\d{3}) (\d+)',
         #                  line)
         match = re.match(r'(.*).*-.*\[(.*)\]'
-                         r' "GET \/projects\/260 HTTP\/1\.1" (\d{3}) (\d+)',
+                         r' "GET \/projects\/260 HTTP\/1\.1" (.*) (\d+)',
                          line)
         if not match:
             continue
