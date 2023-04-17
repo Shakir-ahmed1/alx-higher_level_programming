@@ -4,8 +4,9 @@ import io
 import unittest.mock
 
 from models.base import Base
-from models.square import Square
 from models.rectangle import Rectangle
+from models.square import Square
+
 
 class TestSquare(unittest.TestCase):
     """ A test case for the Square class
@@ -134,7 +135,6 @@ class TestSquare(unittest.TestCase):
         self.assertRaises(TypeError, r1.update, 4, "4", 4, -5)
         self.assertRaises(TypeError, r1.update, 4, 4, 4, (5,))
 
-
     def test_update2(self):
         """ tests the update method with kwargs """
         r1 = Square(10, 10, 10)
@@ -147,7 +147,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(str(r1), f"[Square] ({r1.id}) 3/1 - 2")
         r1.update(x=1, size=2, y=3)
         self.assertEqual(str(r1), f"[Square] ({r1.id}) 1/3 - 2")
-        r1.update(1, 3, x=7,y=9, size=10)
+        r1.update(1, 3, x=7, y=9, size=10)
         self.assertEqual(str(r1), f"[Square] ({r1.id}) 1/3 - 3")
         r1.update(2, x=7, size=8, y=9)
         self.assertEqual(str(r1), f"[Square] ({r1.id}) 1/3 - 3")
@@ -186,70 +186,67 @@ class TestSquare(unittest.TestCase):
 
     def test_to_dictionary(self):
         """ tests the to_dictionary method """
-        r1 = Square(1,3,4)
+        r1 = Square(1, 3, 4)
         self.assertEqual(r1.to_dictionary(),
                          {'x': 3, 'y': 4, 'id': r1.id, 'size': 1})
-        r1.update(1980,11)
+        r1.update(1980, 11)
         temp = r1.to_dictionary()
         self.assertEqual(temp,
                          {'x': 3, 'y': 4, 'id': r1.id, 'size': 11})
-        r1.update(id=1981,x=9)
+        r1.update(id=1981, x=9)
         self.assertEqual(r1.to_dictionary(),
                          {'x': 9, 'y': 4, 'id': 1981, 'size': 11})
         r2 = Square(1)
         self.assertEqual(r2.to_dictionary(),
                          {'x': 0, 'y': 0, 'id': r2.id, 'size': 1})
+
     def test_to_json_string(self):
         r1 = Square(10, 7, 2)
         r2 = Square(11, 8, 3)
         dictionary = r1.to_dictionary()
-        json_dictionary = Base.to_json_string([dictionary,r2.to_dictionary()])
-        self.assertEqual(eval(json_dictionary), [dictionary,r2.to_dictionary()])
-        
+        json_dictionary = Base.to_json_string([dictionary, r2.to_dictionary()])
+        self.assertEqual(eval(json_dictionary), [dictionary, r2.to_dictionary()])
+
         json_dictionary = Square.to_json_string([dictionary])
         self.assertEqual(eval(json_dictionary), [dictionary])
-        
+
         json_dictionary = Square.to_json_string([])
         self.assertEqual(eval(json_dictionary), [])
-        
+
         json_dictionary = Square.to_json_string(None)
         self.assertEqual(eval(json_dictionary), [])
-
 
     def test_save_to_file(self):
         r1 = Square(10, 7, 2)
         r2 = Square(11, 8, 3)
         dictionary = r1.to_dictionary()
-        Square.save_to_file([r1,r2])
-        with open("Square.json","r") as js:
+        Square.save_to_file([r1, r2])
+        with open("Square.json", "r") as js:
             json_dictionary = js.read()
-            self.assertEqual(eval(json_dictionary), [dictionary,r2.to_dictionary()])
-        
-        
+            self.assertEqual(eval(json_dictionary), [dictionary, r2.to_dictionary()])
+
         Square.save_to_file([r1])
-        with open("Square.json","r") as js:
+        with open("Square.json", "r") as js:
             json_dictionary = js.read()
             self.assertEqual(eval(json_dictionary), [dictionary])
-        
+
         Square.save_to_file([])
-        with open("Square.json","r") as js:
-            json_dictionary = js.read()
-            self.assertEqual(eval(json_dictionary), [])
-        
-        Square.save_to_file(None)
-        with open("Square.json","r") as js:
+        with open("Square.json", "r") as js:
             json_dictionary = js.read()
             self.assertEqual(eval(json_dictionary), [])
 
-        
+        Square.save_to_file(None)
+        with open("Square.json", "r") as js:
+            json_dictionary = js.read()
+            self.assertEqual(eval(json_dictionary), [])
 
     def test_from_json_string(self):
         """ tests the from_json_string method """
         r1 = Square(10, 7, 2)
         r2 = Square(11, 8, 3).to_dictionary()
         dictionary = r1.to_dictionary()
-        json_dictionary = Square.from_json_string(str([dictionary,r2]))
-        self.assertEqual(json_dictionary, [dictionary,r2])
+        json_dictionary = Square.from_json_string(str([dictionary, r2]))
+        self.assertEqual(json_dictionary, [dictionary, r2])
 
         json_dictionary = Square.from_json_string(str([dictionary]))
         self.assertEqual(json_dictionary, [dictionary])
@@ -259,7 +256,6 @@ class TestSquare(unittest.TestCase):
 
         json_dictionary = Square.from_json_string(None)
         self.assertEqual(json_dictionary, [])
-
 
     def test_create(self):
         """ tests the create method """
@@ -286,7 +282,7 @@ class TestSquare(unittest.TestCase):
         r3 = Square.create(size=4, id=4, x=1, y=5)
         self.assertEqual(r3.to_dictionary(),
                          {'size': 4, 'id': 4, 'x': 1, 'y': 5})
-        
+
         d = {'size': -4, 'id': 4, 'x': 1, 'y': 5}
         self.assertRaises(ValueError, Square.create, **d)
         d = {'size': 4, 'id': 4, 'x': -1, 'y': 5}

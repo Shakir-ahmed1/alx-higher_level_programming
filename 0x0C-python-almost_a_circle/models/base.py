@@ -5,6 +5,7 @@ Write the first class Base:
 import json
 from os.path import exists
 
+
 class Base:
     """ A Base class for other class """
     __nb_objects = 0
@@ -37,7 +38,7 @@ class Base:
             new.append(ls.to_dictionary())
         data = cls.to_json_string(new)
         with open(f"{cls.__name__}.json", 'w') as js:
-           js.write(data)
+            js.write(data)
 
     @staticmethod
     def from_json_string(json_string):
@@ -45,12 +46,12 @@ class Base:
             return []
         else:
             return eval(json_string)
-    
+
     @classmethod
     def create(cls, **dictionary):
         """ Dictionary to instance """
-        a = cls(1,1)
-        a.update(width=1,size=1,height=1,x=0)
+        a = cls(1, 1)
+        a.update(width=1, size=1, height=1, x=0)
         a.update(**dictionary)
         return a
 

@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """ a unittest for task base.py """
-from models.base import Base
 import unittest
+
+from models.base import Base
 
 
 class TestBase(unittest.TestCase):
     """ test case for Base class"""
+
     def test_basic_base(self):
         """ tests the basic test for the base class
             improvements =  checks if the __init__.py exists
@@ -28,8 +30,8 @@ class TestBase(unittest.TestCase):
     def test_to_json_string(self):
         dictionary = {"a": 1, "b": 2}
         r2 = {"a": 3, "b": 4}
-        json_dictionary = Base.to_json_string([dictionary,r2])
-        self.assertEqual(eval(json_dictionary), [dictionary,r2])
+        json_dictionary = Base.to_json_string([dictionary, r2])
+        self.assertEqual(eval(json_dictionary), [dictionary, r2])
 
         json_dictionary = Base.to_json_string([dictionary])
         self.assertEqual(eval(json_dictionary), [dictionary])
@@ -43,8 +45,8 @@ class TestBase(unittest.TestCase):
     def test_from_json_string(self):
         dictionary = {"a": 1, "b": 2}
         r2 = '{"a": 3, "b": 4}'
-        json_dictionary = Base.from_json_string(str([dictionary,r2]))
-        self.assertEqual(json_dictionary, [dictionary,r2])
+        json_dictionary = Base.from_json_string(str([dictionary, r2]))
+        self.assertEqual(json_dictionary, [dictionary, r2])
 
         json_dictionary = Base.from_json_string(str([dictionary]))
         self.assertEqual(json_dictionary, [dictionary])

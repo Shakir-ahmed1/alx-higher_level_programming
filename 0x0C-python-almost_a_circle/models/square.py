@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 """ a model for Square """
-from models.base import Base
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
     """ Square: a rectangle with the same height and width """
+
     def __init__(self, size, x=0, y=0, id=None):
         """ constructor for Square class """
         super().__init__(size, size, x, y, None)
-    
+
     @property
     def size(self):
         """ returns the size of square """
@@ -42,7 +42,7 @@ class Square(Rectangle):
                 self.x = kwargs["x"]
             if kwargs.get("y") is not None:
                 self.y = kwargs["y"]
- 
+
     def to_dictionary(self):
         """ converts the rectangle to dicitonary """
         dc = {}
@@ -55,5 +55,4 @@ class Square(Rectangle):
     def __str__(self):
         """ string representation of Square """
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
-                self.y, self.width)
-
+                                                 self.y, self.width)

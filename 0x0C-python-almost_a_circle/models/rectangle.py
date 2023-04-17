@@ -5,6 +5,7 @@ from models.base import Base
 
 class Rectangle(Base):
     """ A clase with Rectangle representation """
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """ intializes the attributes and assigns an id"""
         super().__init__(id)
@@ -68,7 +69,7 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
-    
+
     def area(self):
         """ the area of the rectangle width x height """
         return self.__height * self.__width
@@ -76,9 +77,9 @@ class Rectangle(Base):
     def display(self):
         """ displays the rectangle using # according to height and width"""
         for b in range(self.__y):
-            print("\n",end="")
+            print("\n", end="")
         for a in range(self.__height):
-            print(" " * self.__x +"#" * self.__width)
+            print(" " * self.__x + "#" * self.__width)
 
     def update(self, *args, **kwargs):
         """ assigns the values to the attributes using args """
@@ -119,4 +120,4 @@ class Rectangle(Base):
     def __str__(self):
         """ string representation of the rectangle class """
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
-                self.__y, self.__width,self.__height)
+                                                       self.__y, self.__width, self.__height)
