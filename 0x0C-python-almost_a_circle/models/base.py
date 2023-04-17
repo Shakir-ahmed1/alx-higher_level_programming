@@ -60,7 +60,6 @@ class Base:
     @classmethod
     def load_from_file(cls):
         if not exists(f"{cls.__name__}.json"):
-            print(f"{cls.__name__}.json")
             return []
         with open(f"{cls.__name__}.json", 'r') as js:
             j = js.read()
