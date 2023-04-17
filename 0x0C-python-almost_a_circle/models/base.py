@@ -49,12 +49,12 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """ Dictionary to instance """
+        """ creates a new instance with the given dictionary """
         if cls.__name__ == 'Square':
             a = cls(1)
         else:
             a = cls(1, 1)
-        a.update(kwargs = dictionary)
+        a.update(**dictionary)
         return a
 
     @classmethod
