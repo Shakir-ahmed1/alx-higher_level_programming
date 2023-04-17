@@ -3,6 +3,7 @@
 import unittest
 
 from models.base import Base
+from models.rectangle import Rectangle
 
 
 class TestBase(unittest.TestCase):
@@ -56,3 +57,43 @@ class TestBase(unittest.TestCase):
 
         json_dictionary = Base.from_json_string(None)
         self.assertEqual(json_dictionary, [])
+
+    def test_create(self):
+        """ tests the create method """
+        r1 = Rectangle(3, 5)
+        r1_d = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_d)
+        self.assertEqual(r1_d, r2.to_dictionary())
+
+        r1 = Rectangle(3, 5, 6)
+        r1_d = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_d)
+        self.assertEqual(r1_d, r2.to_dictionary())
+
+        r1 = Rectangle(3, 5, 7, 8)
+        r1_d = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_d)
+        self.assertEqual(r1_d, r2.to_dictionary())
+
+        r1 = Rectangle(3, 5, 7, 8, 3)
+        r1_d = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_d)
+        self.assertEqual(r1_d, r2.to_dictionary())
+
+        r1 = {'height': 7, 'width': 1, 'id': 7}
+        r2 = Rectangle.create(**r1)
+        self.assertEqual(r2.to_dictionary(),
+                         {'height': 7, 'width': 1, 'id': 7, 'x': 0, 'y': 0})
+
+        r3 = Rectangle.create(height=3, width=4, id=4, x=1, y=5)
+        self.assertEqual(r3.to_dictionary(),
+                         {'height': 3, 'width': 4, 'id': 4, 'x': 1, 'y': 5})
+
+        d = {'height': -3, 'width': 4, 'id': 4, 'x': 1, 'y': 5}
+        self.assertRaises(ValueError, Rectangle.create, **d)
+        d = {'height': 3, 'width': 4, 'id': 4, 'x': [1], 'y': 5}
+        self.assertRaises(TypeError, Rectangle.create, **d)
+        d = {'height': [3], 'width': 4, 'id': 4, 'x': 1, 'y': 5}
+        self.assertRaises(TypeError, Rectangle.create, **d)
+
+ 
