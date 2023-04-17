@@ -1,7 +1,8 @@
 #!/usr/bin/python3
+""" a model for Square """
 from models.base import Base
 from models.rectangle import Rectangle
-""" a model for Square """
+
 
 class Square(Rectangle):
     """ Square: a rectangle with the same height and width """
