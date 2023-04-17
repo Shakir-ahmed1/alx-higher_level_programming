@@ -8,7 +8,7 @@ class Square(Rectangle):
 
     def __init__(self, size, x=0, y=0, id=None):
         """ constructor for Square class """
-        super().__init__(size, size, x, y, None)
+        super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
