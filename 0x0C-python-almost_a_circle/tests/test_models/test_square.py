@@ -247,10 +247,12 @@ class TestSquare(unittest.TestCase):
         r1 = Square(10, 7, 2)
         r2 = Square(11, 8, 3).to_dictionary()
         dictionary = r1.to_dictionary()
-        json_dictionary = Square.from_json_string(str([dictionary, r2]))
+        json_dictionary = Square.from_json_string(
+                          Square.to_json_string([dictionary, r2]))
         self.assertEqual(json_dictionary, [dictionary, r2])
 
-        json_dictionary = Square.from_json_string(str([dictionary]))
+        json_dictionary = Square.from_json_string(
+                          Square.to_json_string([dictionary]))
         self.assertEqual(json_dictionary, [dictionary])
 
         json_dictionary = Square.from_json_string('[]')

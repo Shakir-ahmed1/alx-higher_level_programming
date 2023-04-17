@@ -44,12 +44,14 @@ class TestBase(unittest.TestCase):
         self.assertEqual(eval(json_dictionary), [])
 
     def test_from_json_string(self):
-        dictionary = {"a": 1, "b": 2}
-        r2 = '{"a": 3, "b": 4}'
-        json_dictionary = Base.from_json_string(str([dictionary, r2]))
+        dictionary = {'a': 1, 'b': 2}
+        r2 = {'a': 3, 'b': 4}
+        json_dictionary = Base.from_json_string(
+                          Base.to_json_string([dictionary, r2]))
         self.assertEqual(json_dictionary, [dictionary, r2])
 
-        json_dictionary = Base.from_json_string(str([dictionary]))
+        json_dictionary = Base.from_json_string(
+                          Base.to_json_string([dictionary]))
         self.assertEqual(json_dictionary, [dictionary])
 
         json_dictionary = Base.from_json_string('[]')
@@ -95,5 +97,3 @@ class TestBase(unittest.TestCase):
         self.assertRaises(TypeError, Rectangle.create, **d)
         d = {'height': [3], 'width': 4, 'id': 4, 'x': 1, 'y': 5}
         self.assertRaises(TypeError, Rectangle.create, **d)
-
- 

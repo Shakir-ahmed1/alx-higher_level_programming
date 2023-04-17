@@ -226,10 +226,12 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(11, 8, 3, 9).to_dictionary()
         dictionary = r1.to_dictionary()
-        json_dictionary = Rectangle.from_json_string(str([dictionary, r2]))
+        json_dictionary = Rectangle.from_json_string(
+                          Base.to_json_string([dictionary, r2]))
         self.assertEqual(json_dictionary, [dictionary, r2])
 
-        json_dictionary = Base.from_json_string(str([dictionary]))
+        json_dictionary = Base.from_json_string(
+                          Rectangle.to_json_string([dictionary]))
         self.assertEqual(json_dictionary, [dictionary])
 
         json_dictionary = Rectangle.from_json_string('[]')
