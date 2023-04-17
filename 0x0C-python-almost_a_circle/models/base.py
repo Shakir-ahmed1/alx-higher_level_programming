@@ -3,6 +3,7 @@
 Write the first class Base:
 """
 import json
+import csv
 from os.path import exists
 
 
@@ -68,3 +69,54 @@ class Base:
             for b in a:
                 ls.append(cls.create(**b))
             return ls
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ saves the list object in csv file """
+        with open(f"{cls.__name__}.csv", "w") as f:
+            a = csv.writer(f)
+            if cls.__name__ == 'Rectangle':
+                for ls in list_objs:
+                    temp = []
+                    ls = ls.to_dictionary()
+                    temp.append(ls["id"])
+                    temp.append(ls["width"])
+                    temp.append(ls["height"])
+                    temp.append(ls["x"])
+                    temp.append(ls["y"])
+                    a.writerow(temp)
+            if cls.__name__ == 'Square':
+                for ls in list_objs:
+                    temp = []
+                    ls = ls.to_dictionary()
+                    temp.append(ls["id"])
+                    temp.append(ls["size"])
+                    temp.append(ls["x"])
+                    temp.append(ls["y"])
+                    a.writerow(temp)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ loads list of objects from csv file """
+        with open(f"{cls.__name__}.csv") as f:
+            a = csv.reader(f)
+            result = []
+            if cls.__name__ == "Rectangle":
+                for b in a:
+                    c = dict()
+                    c["id"] = int(b[0])
+                    c["width"] = int(b[1])
+                    c["height"] = int(b[2])
+                    c["x"] = int(b[3])
+                    c["y"] = int(b[4])
+                    result.append(cls.create(**c))
+            if cls.__name__ == "Square":
+                for b in a:
+                    c = dict()
+                    c["id"] = int(b[0])
+                    c["size"] = int(b[1])
+                    c["x"] = int(b[2])
+                    c["y"] = int(b[3])
+                    result.append(cls.create(**c))
+
+            return result
