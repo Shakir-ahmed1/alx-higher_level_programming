@@ -54,7 +54,7 @@ class Base:
             a = cls(1)
         else:
             a = cls(1, 1)
-        a.update(**dictionary)
+        a.update(kwargs = dictionary)
         return a
 
     @classmethod
