@@ -50,7 +50,11 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """ Dictionary to instance """
-        a = cls(1, 1)
+        if cls.__name__ == 'Square':
+            a = cls(1)
+        else:
+            a = cls(1, 1)
+        a.update(width=1, size=1, height=1, x=0)
         a.update(**dictionary)
         return a
 
