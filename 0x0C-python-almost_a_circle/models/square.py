@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from models.base import Base
 from models.rectangle import Rectangle
-
+""" a model for Square """
 
 class Square(Rectangle):
     """ Square: a rectangle with the same height and width """
@@ -52,6 +52,7 @@ class Square(Rectangle):
         return dc
 
     def __str__(self):
+        """ string representation of Square """
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
                 self.y, self.width)
 
