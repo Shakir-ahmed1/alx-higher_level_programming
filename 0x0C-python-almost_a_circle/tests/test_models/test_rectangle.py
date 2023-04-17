@@ -2,12 +2,12 @@
 """ unittest for the module rectangle """
 import io
 import unittest.mock
-
 from models.base import Base
 from models.rectangle import Rectangle
 
 
 def extract(obj):
+    """ extracts the object to make it comparible """
     return [obj.width, obj.height, obj.x, obj.y, obj.id]
 
 
@@ -19,11 +19,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_basic_rectangle(self):
         """
-            test cases for:
-                correct and incorrect number of arguments with errors
-                zero case
-                issubclass
-                setting and getting no validation
+            test cases for for basic rectangle creation
         """
         r1 = Rectangle(2, 3)
         r2 = Rectangle(2, 3, 4)
@@ -60,9 +56,7 @@ class TestRectangle(unittest.TestCase):
         self.assertRaises(TypeError, Rectangle)
 
     def test_rectangle_validation(self):
-        """ test cases for:
-                setting vaidations
-        """
+        """ test cases for setting vaidations """
         # manualy raised vaule errors
         self.assertRaises(ValueError, Rectangle, 0, 0, 0, 0)
         self.assertRaises(ValueError, Rectangle, 0, 1, 1, 8)
@@ -88,7 +82,7 @@ class TestRectangle(unittest.TestCase):
         self.assertRaises(TypeError, Rectangle, 2, {'2': 4}, 2, 2)
 
     def test_area(self):
-        """ tests the area() method """
+        """ tests the area method """
         r5 = Rectangle(4, 5, 6, 7, None)
         r1 = Rectangle(2, 3)
         r8 = Rectangle(1, 1, 0, 0)
@@ -112,6 +106,7 @@ class TestRectangle(unittest.TestCase):
         self.assertStdout(r2, "#\n")
 
     def test_str(self):
+        """ tests the string representation of the Rectangle """
         r1 = Rectangle(4, 6, 2, 1, 12)
         r2 = Rectangle(5, 5, 1)
         r3 = Rectangle(3, 4)
@@ -167,6 +162,7 @@ class TestRectangle(unittest.TestCase):
         self.assertRaises(TypeError, r1.update, x=4, height=4, width=2.5)
 
     def test_to_dictionary(self):
+        """ tests the to_dictionary method """
         r1 = Rectangle(1, 2, 3, 4, 5)
         self.assertEqual(r1.to_dictionary(),
                          {'x': 3, 'y': 4, 'id': 5, 'height': 2, 'width': 1})
@@ -178,14 +174,17 @@ class TestRectangle(unittest.TestCase):
                          {'x': 7, 'y': 4, 'id': 8, 'height': 2, 'width': 7})
         r2 = Rectangle(1, 2)
         self.assertEqual(r2.to_dictionary(),
-                         {'x': 0, 'y': 0, 'id': r2.id, 'height': 2, 'width': 1})
+                         {'x': 0, 'y': 0,
+                          'id': r2.id, 'height': 2, 'width': 1})
 
     def test_to_json_string(self):
+        """ test the to_json_stirng method """
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(11, 8, 3, 9)
         dictionary = r1.to_dictionary()
         json_dictionary = Base.to_json_string([dictionary, r2.to_dictionary()])
-        self.assertEqual(eval(json_dictionary), [dictionary, r2.to_dictionary()])
+        self.assertEqual(eval(json_dictionary),
+                         [dictionary, r2.to_dictionary()])
 
         json_dictionary = Base.to_json_string([dictionary])
         self.assertEqual(eval(json_dictionary), [dictionary])
@@ -197,13 +196,15 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(eval(json_dictionary), [])
 
     def test_save_to_file(self):
+        """ tests the save_to_file method """
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(11, 8, 3, 9)
         dictionary = r1.to_dictionary()
         Base.save_to_file([r1, r2])
         with open("Base.json", "r") as js:
             json_dictionary = js.read()
-            self.assertEqual(eval(json_dictionary), [dictionary, r2.to_dictionary()])
+            self.assertEqual(eval(json_dictionary),
+                             [dictionary, r2.to_dictionary()])
 
         Rectangle.save_to_file([r1])
         with open("Rectangle.json", "r") as js:
@@ -276,6 +277,7 @@ class TestRectangle(unittest.TestCase):
         self.assertRaises(TypeError, Rectangle.create, **d)
 
     def test_load_from_file(self):
+        """ tests the load from file function """
         Base.save_to_file(None)
         r = Rectangle(1, 1)
         f1 = Base.load_from_file()
@@ -288,7 +290,8 @@ class TestRectangle(unittest.TestCase):
 
         r.save_to_file([r7, r8])
         r1 = r.load_from_file()
-        self.assertEqual([r1[0].to_dictionary(), r1[1].to_dictionary()], [r7.to_dictionary(), r8.to_dictionary()])
+        self.assertEqual([r1[0].to_dictionary(), r1[1].to_dictionary()],
+                         [r7.to_dictionary(), r8.to_dictionary()])
 
         r.save_to_file([])
         r1 = r.load_from_file()

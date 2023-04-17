@@ -205,7 +205,8 @@ class TestSquare(unittest.TestCase):
         r2 = Square(11, 8, 3)
         dictionary = r1.to_dictionary()
         json_dictionary = Base.to_json_string([dictionary, r2.to_dictionary()])
-        self.assertEqual(eval(json_dictionary), [dictionary, r2.to_dictionary()])
+        self.assertEqual(eval(json_dictionary),
+                         [dictionary, r2.to_dictionary()])
 
         json_dictionary = Square.to_json_string([dictionary])
         self.assertEqual(eval(json_dictionary), [dictionary])
@@ -223,7 +224,8 @@ class TestSquare(unittest.TestCase):
         Square.save_to_file([r1, r2])
         with open("Square.json", "r") as js:
             json_dictionary = js.read()
-            self.assertEqual(eval(json_dictionary), [dictionary, r2.to_dictionary()])
+            self.assertEqual(eval(json_dictionary),
+                             [dictionary, r2.to_dictionary()])
 
         Square.save_to_file([r1])
         with open("Square.json", "r") as js:
