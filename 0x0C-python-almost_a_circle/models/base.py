@@ -51,7 +51,6 @@ class Base:
     def create(cls, **dictionary):
         """ Dictionary to instance """
         a = cls(1, 1)
-        a.update(width=1, size=1, height=1, x=0)
         a.update(**dictionary)
         return a
 
