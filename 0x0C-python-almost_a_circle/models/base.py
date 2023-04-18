@@ -123,6 +123,7 @@ class Base:
             return result
 
     def draw(list_rectangles, list_squares):
+        """ draw using turtle """
         for lr in list_rectangles:
             turtle.penup()
             turtle.goto(lr.x, lr.y)
