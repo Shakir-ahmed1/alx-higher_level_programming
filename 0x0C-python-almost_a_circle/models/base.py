@@ -122,6 +122,7 @@ class Base:
 
             return result
 
+    @staticmethod
     def draw(list_rectangles, list_squares):
         """ draw using turtle """
         turtle.color("blue", "red")

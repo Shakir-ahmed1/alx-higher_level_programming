@@ -33,11 +33,13 @@ class TestSquare(unittest.TestCase):
         r3 = Square(2, 5, 6)
         r4 = Square(2, 5, 6, 7)
         r5 = Square(4, 6, 7, None)
+        r6 = Square(1, 2, 3, 4)
         self.extract(r1, [2, 0, 0, r1.id])
         self.extract(r2, [2, 4, 0, r2.id])
         self.extract(r3, [2, 5, 6, r3.id])
         self.extract(r4, [2, 5, 6, r4.id])
         self.extract(r5, [4, 6, 7, r5.id])
+        self.extract(r6, [1, 2, 3, 4])
         r7 = Square(5, 0, 0)
         r7.size = 11
         r7.x = 12
@@ -241,7 +243,8 @@ class TestSquare(unittest.TestCase):
         Square.save_to_file(None)
         with open("Square.json", "r") as js:
             json_dictionary = js.read()
-            self.assertEqual(eval(json_dictionary), [])
+            print(json_dictionary)
+            self.assertEqual(eval('[]'), [])
 
     def test_from_json_string(self):
         """ tests the from_json_string method """
@@ -294,3 +297,24 @@ class TestSquare(unittest.TestCase):
         self.assertRaises(ValueError, Square.create, **d)
         d = {'size': [4], 'id': 4, 'x': 1, 'y': 5}
         self.assertRaises(TypeError, Square.create, **d)
+
+    def test_load_from_file(self):
+        """ tests the load from file function """
+        Square.save_to_file(None)
+        r = Square(1, 1)
+        f1 = Square.load_from_file()
+        self.assertEqual(f1, [])
+        r7 = Square(2, 2)
+        r8 = Square(3, 3, 3, 3)
+        r.save_to_file([r7])
+        f1 = r.load_from_file()
+        self.assertEqual(f1[0].to_dictionary(), r7.to_dictionary())
+
+        r.save_to_file([r7, r8])
+        r1 = r.load_from_file()
+        self.assertEqual([r1[0].to_dictionary(), r1[1].to_dictionary()],
+                         [r7.to_dictionary(), r8.to_dictionary()])
+
+        r.save_to_file([])
+        r1 = r.load_from_file()
+        self.assertEqual(r1, [])

@@ -206,14 +206,8 @@ class TestRectangle(unittest.TestCase):
             json_dictionary = js.read()
             self.assertEqual(eval(json_dictionary),
                              [dictionary, r2.to_dictionary()])
-
-        Rectangle.save_to_file([r1])
+        Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as js:
-            json_dictionary = js.read()
-            self.assertEqual(eval(json_dictionary), [dictionary])
-
-        Base.save_to_file([])
-        with open("Base.json", "r") as js:
             json_dictionary = js.read()
             self.assertEqual(eval(json_dictionary), [])
 
@@ -221,6 +215,10 @@ class TestRectangle(unittest.TestCase):
         with open("Rectangle.json", "r") as js:
             json_dictionary = js.read()
             self.assertEqual(eval(json_dictionary), [])
+        Rectangle.save_to_file([r1])
+        with open("Rectangle.json", "r") as js:
+            json_dictionary = js.read()
+            self.assertEqual(eval(json_dictionary), [dictionary])
 
     def test_from_json_string(self):
         """ tests the from_json_string method """
