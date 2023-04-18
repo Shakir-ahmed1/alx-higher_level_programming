@@ -81,9 +81,10 @@ class TestSquare(unittest.TestCase):
         self.assertRaises(ValueError, Square, -7, -6, -7)
         # manualy raised type errors
         self.assertRaises(TypeError, Square, "size")
-        self.assertRaises(TypeError, Square, (2,))
+        self.assertRaises(TypeError, Square, 2, (2,))
         self.assertRaises(TypeError, Square, [2], 2, 2)
-        self.assertRaises(TypeError, Square, True, 2, {5, 6})
+        self.assertRaises(TypeError, Square, True, 2, 6)
+        self.assertRaises(TypeError, Square, 5, 2, {5, 6})
         self.assertRaises(TypeError, Square, 2, 3, 4, None, None)
         self.assertRaises(TypeError, Square, 2, 2.5, 2, 2)
         self.assertRaises(TypeError, Square, 2, {'2': 4}, 2, 2)

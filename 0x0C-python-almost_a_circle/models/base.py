@@ -124,6 +124,8 @@ class Base:
 
     def draw(list_rectangles, list_squares):
         """ draw using turtle """
+        turtle.color("blue", "red")
+        turtle.begin_fill()
         for lr in list_rectangles:
             turtle.penup()
             turtle.goto(lr.x, lr.y)
