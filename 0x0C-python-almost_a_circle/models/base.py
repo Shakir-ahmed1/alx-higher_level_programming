@@ -4,6 +4,7 @@ Write the first class Base:
 """
 import json
 import csv
+import turtle
 from os.path import exists
 
 
@@ -120,3 +121,26 @@ class Base:
                     result.append(cls.create(**c))
 
             return result
+
+    def draw(list_rectangles, list_squares):
+        for lr in list_rectangles:
+            turtle.penup()
+            turtle.goto(lr.x, lr.y)
+            turtle.pendown()
+
+            for i in range(2):
+                turtle.forward(lr.width)
+                turtle.right(90)
+                turtle.forward(lr.height)
+                turtle.right(90)
+
+        for lr in list_squares:
+            turtle.penup()
+            turtle.goto(lr.x, lr.y)
+            turtle.pendown()
+
+            for i in range(2):
+                turtle.forward(lr.size)
+                turtle.right(90)
+                turtle.forward(lr.size)
+                turtle.right(90)
