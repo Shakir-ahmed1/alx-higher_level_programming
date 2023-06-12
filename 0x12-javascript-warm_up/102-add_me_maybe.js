@@ -3,4 +3,4 @@ function addMeMaybe (nb, theFunction) {
   nb++;
   theFunction(nb);
 }
-module.exports.addMeMaybe = addMeMaybe
+module.exports.addMeMaybe = addMeMaybe;
