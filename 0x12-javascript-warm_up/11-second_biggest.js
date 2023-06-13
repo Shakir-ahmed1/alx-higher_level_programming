@@ -4,7 +4,7 @@ let first, second;
 if (len <= 3) {
   console.log(0);
 } else {
-  if (process.argv[2] > process.argv[3]) {
+  if (Number(process.argv[2]) > Number(process.argv[3])) {
     first = process.argv[2];
     second = process.argv[3];
   } else {
@@ -12,7 +12,7 @@ if (len <= 3) {
     second = process.argv[2];
   }
   for (let i = 4; i < len; i++) {
-    if (process.argv[i] > first) {
+    if (Number(process.argv[i]) > Number(first)) {
       second = first;
       first = process.argv[i];
     }
