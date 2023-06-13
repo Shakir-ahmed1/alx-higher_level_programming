@@ -15,6 +15,8 @@ if (len <= 3) {
     if (Number(process.argv[i]) > Number(first)) {
       second = first;
       first = process.argv[i];
+    } else if (Number(process.argv[i]) > Number(second) && Number(process.argv[i]) < Number(first)) {
+      second = process.argv[i];
     }
   }
   console.log(second);
