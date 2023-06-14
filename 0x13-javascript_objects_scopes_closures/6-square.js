@@ -33,8 +33,11 @@ class Square extends Rectangle {
     super(size, size);
   }
 
-  charPrint (letter = 'X') {
+  charPrint (letter) {
     let temp = '';
+    if (typeof letter === 'undefined') {
+	    letter = 'X';
+    }
     for (let i = 0; i < this.height; i++) {
       for (let j = 0; j < this.width; j++) {
         temp += letter;
