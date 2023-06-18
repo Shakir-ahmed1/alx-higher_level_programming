@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" fetches all states in the state table"""
 import MySQLdb
 from sys import argv
 db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
