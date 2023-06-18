@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" fetchs the first element """
 if __name__ == "__main__":
     from sys import argv
     from sqlalchemy import create_engine
