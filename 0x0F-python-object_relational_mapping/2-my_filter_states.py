@@ -4,7 +4,7 @@ if __name__ == '__main__':
     import MySQLdb
     from sys import argv
     db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
-    db.query("SELECT * FROM states WHERE name = '{}' ORDER BY states.id ASC".format(argv[4]))
+    db.query("SELECT * FROM states WHERE name = '{}'".format(argv[4]))
     r = db.use_result()
     for st in r.fetch_row(maxrows=0):
         print(st)
