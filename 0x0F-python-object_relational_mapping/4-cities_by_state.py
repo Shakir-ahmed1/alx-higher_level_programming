@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" gets cities with their state name """
 if __name__ == '__main__':
     import MySQLdb
     from sys import argv
