@@ -14,4 +14,4 @@ if __name__ == "__main__":
     session = Session()
     result = session.query(City, State).join(City)
     for c, s in result:
-        print(f"{s.name}: ({c.state_id}) {c.name}")
+        print(f"{s.name}: ({c.id}) {c.name}")
