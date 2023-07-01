@@ -5,6 +5,10 @@ def find_peak(list_of_integers):
     """ finds a pick """
     length = len(list_of_integers)
     li = list_of_integers
+    if not list_of_integers:
+        return None
+    if length == 1:
+        return li[0]
     for a in range(length):
         if a == 0 and length > 1 and li[0] >= li[1]:
             return li[0]
