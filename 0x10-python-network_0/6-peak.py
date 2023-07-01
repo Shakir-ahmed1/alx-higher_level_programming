@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ module that finds peak """
 
+
 def find_peak(list_of_integers):
     """ finds a pick """
     length = len(list_of_integers)
@@ -17,4 +18,3 @@ def find_peak(list_of_integers):
                 return li[a]
         elif a == length - 1 and a > 1 and li[-1] >= li[-2]:
             return li[0]
-
