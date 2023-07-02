@@ -6,8 +6,7 @@ if __name__ == "__main__":
     from sys import argv
     username = argv[1]
     password = argv[2]
-    url = f"https://api.github.com/users/{username}"
-    hd = {"Authorization": password, "X-GitHub-Api-Version": "2022-11-28"}
-    r = requests.get(url, headers= hd)
+    url = f"https://api.github.com/user"
+    r = requests.get(url, auth=(username, password))
     js = r.json()
-    print(js['id'])
+    print(js['id'] if r.status_code != 401 else None)
