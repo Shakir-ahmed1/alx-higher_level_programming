@@ -13,5 +13,5 @@ if __name__ == "__main__":
             print(f"[{js['id']}] {js['name']}")
         else:
             print("No result")
-    except requests.exceptions.JSONDecodeError:
+    except:
         print("Not a valid JSON")
