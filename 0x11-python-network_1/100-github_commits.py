@@ -8,5 +8,7 @@ if __name__ == "__main__":
     url = f" https://api.github.com/repos/{user}/{repo}/commits"
     r = requests.get(url)
     js = r.json()
-    for j in range(10):
-        print(f"{js[j]['sha']}: {js[j]['commit']['author']['name']}")
+    if js:
+        limit = 10 if len(js) > 10 else len(js)
+        for j in range(limit):
+            print(f"{js[j]['sha']}: {js[j]['commit']['author']['name']}")
