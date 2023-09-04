@@ -3,18 +3,16 @@
 
 
 def find_peak(list_of_integers):
-    """ finds a pick """
-    length = len(list_of_integers)
-    li = list_of_integers
-    if not list_of_integers:
-        return None
-    if length == 1:
-        return li[0]
-    for a in range(length):
-        if a == 0 and length > 1 and li[0] >= li[1]:
-            return li[0]
-        elif a > 1 and a < length - 1:
-            if li[a - 1] < li[a] and li[a + 1] <= li[a]:
-                return li[a]
-        elif a == length - 1 and a > 1 and li[-1] >= li[-2]:
-            return li[0]
+    """ finds a pick using the same principles as binary search"""
+    if not list_of_integers or len(list_of_integers) == 1:
+        return list_of_integers[0] if list_of_integers else None
+
+    mid = len(list_of_integers) // 2
+    left = list_of_integers[:mid]
+    right = list_of_integers[mid+1:]
+    if (not left or list_of_integers[mid] >= left[-1]) and (not right or list_of_integers[mid] >= right[0]):
+        return list_of_integers[mid]
+    elif left and list_of_integers[mid] < left[-1]:
+        return find_peak(left)
+    else:
+        return find_peak(right)
