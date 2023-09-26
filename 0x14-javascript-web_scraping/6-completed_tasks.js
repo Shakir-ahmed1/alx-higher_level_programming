@@ -10,7 +10,7 @@ request(process.argv[2], (err, response, body) => {
       if (todos[i].userId in result) {
         if (todos[i].completed === true) result[todos[i].userId] += 1;
       } else {
-        result[todos[i].userId] = 0;
+        result[todos[i].userId] = 1;
       }
     }
     console.log(result);
